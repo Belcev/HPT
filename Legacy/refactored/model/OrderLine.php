@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Legacy\Refactored\model;
+namespace legacy\refactored\model;
 
 readonly class OrderLine
 {
