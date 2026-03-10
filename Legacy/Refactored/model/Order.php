@@ -27,7 +27,7 @@ class Order
         $this->totalPrice += $item->totalPrice;
     }
 
-    public function toJSON(): string
+    public function toJson(): string
     {
         $encoded = json_encode($this->toArray());
         if ($encoded === false) {

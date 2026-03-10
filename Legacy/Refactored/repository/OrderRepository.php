@@ -14,7 +14,7 @@ class OrderRepository
     {
         $result = file_put_contents(
             filename: self::FILE_PATH,
-            data: $order->toJSON() . "\n",
+            data: $order->toJson() . "\n",
             flags: FILE_APPEND | LOCK_EX,
         );
 

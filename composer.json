@@ -4,7 +4,13 @@
     "autoload": {
         "psr-4": {
             "Belcev\\Hpt\\": "src/",
-            "App\\": "app/"
+            "App\\": "app/",
+            "Legacy\\Refactored\\": "Legacy/Refactored/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
     },
     "authors": [

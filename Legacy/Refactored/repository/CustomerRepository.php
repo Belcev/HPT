@@ -37,7 +37,7 @@ class CustomerRepository
         return $customer;
     }
 
-    public function save(Customer $customer): void
+    private function save(Customer $customer): void
     {
         $this->customers[$customer->email] = $customer;
 
