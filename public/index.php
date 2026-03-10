@@ -16,13 +16,20 @@ use Slim\Factory\AppFactory;
 require __DIR__ . '/../vendor/autoload.php';
 
 $dotenv = parse_ini_file(__DIR__ . '/../.env');
-foreach ($dotenv as $key => $value) {
-    $_ENV[$key] = $value;
-    putenv("{$key}={$value}");
+if (is_array($dotenv)) {
+    foreach ($dotenv as $key => $value) {
+        if (is_string($value) || is_int($value) || is_float($value)) {
+            $val = (string) $value;
+            $_ENV[$key] = $val;
+            putenv("{$key}={$val}");
+        }
+    }
 }
 
 $builder = new ContainerBuilder();
-$builder->addDefinitions(require __DIR__ . '/../bootstrap/container.php');
+/** @var array<string, mixed> $definitions */
+$definitions = require __DIR__ . '/../bootstrap/container.php';
+$builder->addDefinitions($definitions);
 $container = $builder->build();
 
 AppFactory::setContainer($container);
@@ -46,7 +53,7 @@ $errorMiddleware->setDefaultErrorHandler(
         $response = $app->getResponseFactory()->createResponse($status);
         $response->getBody()->write(json_encode([
             'error' => $e->getMessage(),
-        ], JSON_UNESCAPED_UNICODE));
+        ], JSON_UNESCAPED_UNICODE) ?: '{}');
 
         return $response->withHeader('Content-Type', 'application/json');
     },
@@ -58,7 +65,7 @@ $app->get('/health', function (
 ): ResponseInterface {
     $response->getBody()->write(json_encode([
         'status' => 'ok',
-    ]));
+    ]) ?: '{}');
     return $response->withHeader('Content-Type', 'application/json');
 });
 

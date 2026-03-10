@@ -31,8 +31,8 @@ class OrderController
 
         try {
             $order = $this->orderService->create(
-                (string) $body['cart_id'],
-                (string) $body['shipping_address']
+                $body['cart_id'],
+                $body['shipping_address']
             );
         } catch (CartNotFoundException | CartEmptyException $e) {
             return $this->error($response, 400, $e->getMessage());

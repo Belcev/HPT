@@ -38,7 +38,7 @@ class DatabaseProductRepository implements ProductRepositoryInterface
             sku: (string) $row['sku'],
             name: (string) $row['name'],
             priceCents: (int) $row['price_cents'],
-            description: isset($row['description']) ? (string) $row['description'] : null,
+            description: $row['description'] ?? null,
         );
     }
 }

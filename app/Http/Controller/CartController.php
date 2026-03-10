@@ -50,13 +50,13 @@ class CartController
         }
 
         /** @var array{cart_id: string, sku: string, quantity?: int} $body */
-        $quantity = isset($body['quantity']) ? (int) $body['quantity'] : 1;
+        $quantity = $body['quantity'] ?? 1;
         if ($quantity < 1) {
             return $this->error($response, 400, 'Quantity must be at least 1');
         }
 
         try {
-            $cart = $this->cartService->addItem((string) $body['cart_id'], (string) $body['sku'], $quantity);
+            $cart = $this->cartService->addItem($body['cart_id'], $body['sku'], $quantity);
         } catch (CartNotFoundException|ProductNotFoundException $e) {
             return $this->error($response, 404, $e->getMessage());
         }
@@ -74,10 +74,10 @@ class CartController
         }
 
         /** @var array{cart_id: string, sku: string, quantity?: int} $body */
-        $quantity = isset($body['quantity']) ? (int) $body['quantity'] : null;
+        $quantity = $body['quantity'] ?? null;
 
         try {
-            $cart = $this->cartService->removeItem((string) $body['cart_id'], (string) $body['sku'], $quantity);
+            $cart = $this->cartService->removeItem($body['cart_id'], $body['sku'], $quantity);
         } catch (CartNotFoundException $e) {
             return $this->error($response, 404, $e->getMessage());
         }

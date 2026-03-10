@@ -15,16 +15,14 @@ use Doctrine\DBAL\DriverManager;
 use GuzzleHttp\Client;
 
 return [
-    Connection::class => function (): Connection {
-        return DriverManager::getConnection([
-            'driver' => 'pdo_mysql',
-            'host' => getenv('DB_HOST') ?: 'mysql',
-            'dbname' => getenv('DB_NAME') ?: 'HPT',
-            'user' => getenv('DB_USER') ?: 'HPT',
-            'password' => getenv('DB_PASS') ?: 'secret',
-            'charset' => 'utf8mb4',
-        ]);
-    },
+    Connection::class => fn (): Connection => DriverManager::getConnection([
+        'driver' => 'pdo_mysql',
+        'host' => getenv('DB_HOST') ?: 'mysql',
+        'dbname' => getenv('DB_NAME') ?: 'HPT',
+        'user' => getenv('DB_USER') ?: 'HPT',
+        'password' => getenv('DB_PASS') ?: 'secret',
+        'charset' => 'utf8mb4',
+    ]),
 
     Client::class => fn (): Client => new Client([
         'timeout' => 5.0,

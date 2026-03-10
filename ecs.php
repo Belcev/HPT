@@ -6,9 +6,12 @@ use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 return ECSConfig::configure()
     ->withPaths([
-//        __DIR__ . '/src',
-//        __DIR__ . '/app',
+        __DIR__ . '/app',
+        __DIR__ . '/tests',
         __DIR__ . '/Legacy/Refactored',
+        __DIR__ . '/bootstrap',
+        __DIR__ . '/docker',
+        __DIR__ . '/public',
     ])
     ->withPreparedSets(
         psr12: true,

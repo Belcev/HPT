@@ -32,12 +32,10 @@ class DatabaseOrderRepository implements OrderRepositoryInterface
 
     public function findAll(): array
     {
+        /** @var list<array{id: string, shipping_address: string, total_cents: int, geo_location: string|null, created_at: string}> $rows */
         $rows = $this->db->fetchAllAssociative('SELECT * FROM orders ORDER BY created_at DESC');
 
-        return array_map(function (array $row): Order {
-            /** @var array{id: string, shipping_address: string, total_cents: int, geo_location: string|null, created_at: string} $row */
-            return $this->hydrate($row);
-        }, $rows);
+        return array_map($this->hydrate(...), $rows);
     }
 
     public function save(Order $order): void
@@ -84,7 +82,7 @@ class DatabaseOrderRepository implements OrderRepositoryInterface
             shippingAddress: (string) $row['shipping_address'],
             items: $items,
             totalCents: (int) $row['total_cents'],
-            geoLocation: isset($row['geo_location']) ? (string) $row['geo_location'] : null,
+            geoLocation: $row['geo_location'] ?? null,
             createdAt: new \DateTime((string) $row['created_at']),
         );
     }

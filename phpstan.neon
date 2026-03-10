@@ -1,6 +1,10 @@
 parameters:
     paths:
-#        - app
+        - app
+        - bootstrap
+        - docker
+        - public
+        - tests
         - Legacy/Refactored
 
     tmpDir: tmp/phpstan
