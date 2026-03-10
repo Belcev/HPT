@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace legacy\refactored\model;
 
-readonly class Product
+final readonly class Product
 {
     public function __construct(
         public string $sku,

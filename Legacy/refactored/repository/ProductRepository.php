@@ -6,7 +6,7 @@ namespace legacy\refactored\repository;
 
 use legacy\refactored\model\Product;
 
-class ProductRepository
+final class ProductRepository
 {
     private const string FILE_PATH = 'products.json';
 

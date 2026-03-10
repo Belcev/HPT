@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace legacy\refactored\model;
 
-readonly class OrderLine
+final readonly class OrderLine
 {
     public int $totalPrice;
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace legacy\refactored\model;
 
-readonly class Customer
+final readonly class Customer
 {
     public function __construct(
         public int $id,

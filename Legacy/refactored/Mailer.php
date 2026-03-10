@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace legacy\refactored;
 
-class Mailer
+final class Mailer
 {
     public function send(
         string $to,

@@ -12,13 +12,13 @@ use legacy\refactored\repository\CustomerRepository;
 use legacy\refactored\repository\OrderRepository;
 use legacy\refactored\repository\ProductRepository;
 
-class OrderManager
+final readonly class OrderManager
 {
     public function __construct(
-        private readonly CustomerRepository $customerRepository,
-        private readonly ProductRepository $productRepository,
-        private readonly OrderRepository $orderRepository,
-        private readonly Mailer $mailer,
+        private CustomerRepository $customerRepository,
+        private ProductRepository $productRepository,
+        private OrderRepository $orderRepository,
+        private Mailer $mailer,
     ) {
     }
 

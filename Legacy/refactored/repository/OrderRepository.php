@@ -6,7 +6,7 @@ namespace legacy\refactored\repository;
 
 use legacy\refactored\model\Order;
 
-class OrderRepository
+final class OrderRepository
 {
     private const string FILE_PATH = 'orders.json';
 

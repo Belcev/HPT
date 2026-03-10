@@ -6,7 +6,7 @@ namespace legacy\refactored\model;
 
 use DateTime;
 
-class Order
+final class Order
 {
     /**
      * @var list<OrderLine>
