@@ -46,15 +46,15 @@ class ProductRepository
         foreach ($loadedProducts as $product) {
             if (
                 ! is_array($product)
-                || ! isset($product['sku'], $product['price'])
+                || ! isset($product['sku'], $product['priceCents'])
                 || ! is_string($product['sku'])
-                || ! is_int($product['price'])
+                || ! is_int($product['priceCents'])
             ) {
                 continue;
             }
             $products[$product['sku']] = new Product(
                 sku: $product['sku'],
-                price: $product['price'],
+                priceCents: $product['priceCents'],
             );
         }
         return $products;

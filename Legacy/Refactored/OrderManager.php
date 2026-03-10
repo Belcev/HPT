@@ -55,7 +55,7 @@ class OrderManager
 
             $line = new OrderLine(
                 sku: $product->sku,
-                price: $product->price,
+                priceCents: $product->priceCents,
                 quantity: $item['quantity'],
             );
             $order->addItem($line);

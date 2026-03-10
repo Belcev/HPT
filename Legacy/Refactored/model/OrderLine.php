@@ -10,9 +10,9 @@ readonly class OrderLine
 
     public function __construct(
         public string $sku,
-        public int $price,
+        public int $priceCents,
         public int $quantity,
     ) {
-        $this->totalPrice = $price * $quantity;
+        $this->totalPrice = $priceCents * $quantity;
     }
 }

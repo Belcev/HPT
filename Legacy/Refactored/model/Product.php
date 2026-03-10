@@ -8,7 +8,7 @@ readonly class Product
 {
     public function __construct(
         public string $sku,
-        public int $price,
+        public int $priceCents,
     ) {
     }
 }

@@ -45,7 +45,7 @@ class Order
             'customer_id' => $this->customerId,
             'items' => array_map(fn (OrderLine $line): array => [
                 'sku' => $line->sku,
-                'price' => $line->price,
+                'price' => $line->priceCents,
                 'quantity' => $line->quantity,
                 'total_price' => $line->totalPrice,
             ], $this->items),
