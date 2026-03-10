@@ -10,7 +10,10 @@ RUN apt-get update \
         unzip \
         libzip-dev
 
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install  \
+        zip  \
+        pdo  \
+        pdo_mysql
 
 ENV COMPOSER_MEMORY_LIMIT=-1
 

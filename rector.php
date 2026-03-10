@@ -7,9 +7,12 @@ use Rector\Set\ValueObject\SetList;
 
 return RectorConfig::configure()
     ->withPaths([
-//        __DIR__ . '/src',
-//        __DIR__ . '/app',
+        __DIR__ . '/app',
+        __DIR__ . '/tests',
         __DIR__ . '/Legacy/Refactored',
+        __DIR__ . '/bootstrap',
+        __DIR__ . '/docker',
+        __DIR__ . '/public',
     ])
     ->withPhpSets(php84: true)
     ->withSets([
