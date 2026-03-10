@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Legacy\Refactored;
+namespace legacy\refactored;
 
-use Legacy\Refactored\model\Customer;
-use Legacy\Refactored\model\Order;
-use Legacy\Refactored\model\OrderLine;
-use Legacy\Refactored\model\Product;
-use Legacy\Refactored\repository\CustomerRepository;
-use Legacy\Refactored\repository\OrderRepository;
-use Legacy\Refactored\repository\ProductRepository;
+use legacy\refactored\model\Customer;
+use legacy\refactored\model\Order;
+use legacy\refactored\model\OrderLine;
+use legacy\refactored\model\Product;
+use legacy\refactored\repository\CustomerRepository;
+use legacy\refactored\repository\OrderRepository;
+use legacy\refactored\repository\ProductRepository;
 
 class OrderManager
 {
