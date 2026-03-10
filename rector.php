@@ -9,7 +9,7 @@ return RectorConfig::configure()
     ->withPaths([
 //        __DIR__ . '/src',
 //        __DIR__ . '/app',
-        __DIR__ . '/Legacy/new',
+        __DIR__ . '/Legacy/Refactored',
     ])
     ->withPhpSets(php84: true)
     ->withSets([

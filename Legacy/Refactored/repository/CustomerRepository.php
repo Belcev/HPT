@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Legacy\New\repository;
+namespace Legacy\Refactored\repository;
 
-use Legacy\New\model\Customer;
+use Legacy\Refactored\model\Customer;
 
 class CustomerRepository
 {
@@ -25,41 +25,26 @@ class CustomerRepository
         return $this->customers[$email] ?? null;
     }
 
-    /**
-     * @param array{
-     *     email: string,
-     *     name: string,
-     *     address: string
-     * } $orderData
-     */
-    public function createFromArray(array $orderData): Customer
+    public function create(string $name, string $email, string $address): Customer
     {
         $customer = new Customer(
             id: $this->generateId(),
-            name: $orderData['name'],
-            email: $orderData['email'],
-            address: $orderData['address']
+            name: $name,
+            email: $email,
+            address: $address,
         );
         $this->save($customer);
         return $customer;
-    }
-
-    private function generateId(): int
-    {
-        if ($this->customers === []) {
-            return 1;
-        }
-        return max(array_map(fn(Customer $c): int => $c->id, $this->customers)) + 1;
     }
 
     public function save(Customer $customer): void
     {
         $this->customers[$customer->email] = $customer;
 
-        $data = array_map(fn(Customer $c): array => [
-            'id'      => $c->id,
-            'name'    => $c->name,
-            'email'   => $c->email,
+        $data = array_map(fn (Customer $c): array => [
+            'id' => $c->id,
+            'name' => $c->name,
+            'email' => $c->email,
             'address' => $c->address,
         ], $this->customers);
 
@@ -72,6 +57,14 @@ class CustomerRepository
         if ($result === false) {
             throw new \RuntimeException('Could not save customers to file');
         }
+    }
+
+    private function generateId(): int
+    {
+        if ($this->customers === []) {
+            return 1;
+        }
+        return max(array_map(fn (Customer $c): int => $c->id, $this->customers)) + 1;
     }
 
     /**
@@ -107,7 +100,7 @@ class CustomerRepository
                 id: $customer['id'],
                 name: $customer['name'],
                 email: $customer['email'],
-                address: $customer['address']
+                address: $customer['address'],
             );
         }
         return $customers;

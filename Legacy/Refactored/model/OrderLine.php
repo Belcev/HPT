@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Legacy\New\model;
+namespace Legacy\Refactored\model;
 
 readonly class OrderLine
 {
-    public float $totalPrice;
+    public int $totalPrice;
 
     public function __construct(
         public string $sku,
-        public float  $price = 0.0,
-        public int    $quantity = 0
+        public int $price,
+        public int $quantity,
     ) {
         $this->totalPrice = $price * $quantity;
     }

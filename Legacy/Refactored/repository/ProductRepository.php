@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Legacy\New\repository;
+namespace Legacy\Refactored\repository;
 
-use Legacy\New\model\Product;
+use Legacy\Refactored\model\Product;
 
 class ProductRepository
 {
@@ -48,13 +48,13 @@ class ProductRepository
                 ! is_array($product)
                 || ! isset($product['sku'], $product['price'])
                 || ! is_string($product['sku'])
-                || ! is_numeric($product['price'])
+                || ! is_int($product['price'])
             ) {
                 continue;
             }
             $products[$product['sku']] = new Product(
                 sku: $product['sku'],
-                price: (float)$product['price']
+                price: $product['price'],
             );
         }
         return $products;
