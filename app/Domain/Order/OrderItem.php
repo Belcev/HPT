@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Order;
 
-readonly class OrderItem
+final readonly class OrderItem
 {
     public int $totalCents;
 

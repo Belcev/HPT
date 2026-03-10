@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Cart;
 
-readonly class CartItem
+final readonly class CartItem
 {
     public function __construct(
         public string $sku,

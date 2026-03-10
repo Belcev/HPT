@@ -11,10 +11,10 @@ use App\Domain\Exception\CartNotFoundException;
 use DateTime;
 use Doctrine\DBAL\Connection;
 
-class DatabaseCartRepository implements CartRepositoryInterface
+final readonly class DatabaseCartRepository implements CartRepositoryInterface
 {
     public function __construct(
-        private readonly Connection $db
+        private Connection $db
     ) {
     }
 

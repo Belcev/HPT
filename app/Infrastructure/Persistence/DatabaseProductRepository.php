@@ -9,10 +9,10 @@ use App\Domain\Product\Product;
 use App\Domain\Product\ProductRepositoryInterface;
 use Doctrine\DBAL\Connection;
 
-class DatabaseProductRepository implements ProductRepositoryInterface
+final readonly class DatabaseProductRepository implements ProductRepositoryInterface
 {
     public function __construct(
-        private readonly Connection $db
+        private Connection $db
     ) {
     }
 

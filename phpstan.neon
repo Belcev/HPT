@@ -5,7 +5,7 @@ parameters:
         - docker
         - public
         - tests
-        - Legacy/Refactored
+        - legacy/refactored
 
     tmpDir: tmp/phpstan
     level: max

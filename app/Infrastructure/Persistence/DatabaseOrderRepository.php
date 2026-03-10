@@ -10,10 +10,10 @@ use App\Domain\Order\OrderItem;
 use App\Domain\Order\OrderRepositoryInterface;
 use Doctrine\DBAL\Connection;
 
-class DatabaseOrderRepository implements OrderRepositoryInterface
+final readonly class DatabaseOrderRepository implements OrderRepositoryInterface
 {
     public function __construct(
-        private readonly Connection $db
+        private Connection $db
     ) {
     }
 

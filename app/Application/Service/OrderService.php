@@ -12,12 +12,12 @@ use App\Domain\Order\OrderItem;
 use App\Domain\Order\OrderRepositoryInterface;
 use App\Infrastructure\ExternalApi\GeocoderInterface;
 
-class OrderService
+final readonly class OrderService
 {
     public function __construct(
-        private readonly OrderRepositoryInterface $orderRepository,
-        private readonly CartRepositoryInterface $cartRepository,
-        private readonly GeocoderInterface $geocoder,
+        private OrderRepositoryInterface $orderRepository,
+        private CartRepositoryInterface $cartRepository,
+        private GeocoderInterface $geocoder,
     ) {
     }
 

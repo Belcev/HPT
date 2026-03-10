@@ -3,9 +3,8 @@
     "description": "mini E-com Api",
     "autoload": {
         "psr-4": {
-            "Belcev\\Hpt\\": "src/",
             "App\\": "app/",
-            "Legacy\\Refactored\\": "Legacy/Refactored/"
+            "legacy\\refactored\\": "legacy/refactored/"
         }
     },
     "autoload-dev": {
@@ -37,11 +36,12 @@
         "rector": "rector process --dry-run",
         "ecs": "ecs check",
         "ecs-fix": "ecs check --fix",
+        "test": "phpunit --testdox",
         "check": [
             "@phpstan",
             "@rector",
-            "@ecs"
-        ],
-        "test": "phpunit --testdox"
+            "@ecs",
+            "@test"
+        ]
     }
 }

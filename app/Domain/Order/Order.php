@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Order;
 
-readonly class Order
+final readonly class Order
 {
     /**
      * @param list<OrderItem> $items

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Legacy\Refactored\repository;
+namespace legacy\refactored\repository;
 
-use Legacy\Refactored\model\Customer;
+use legacy\refactored\model\Customer;
 
 class CustomerRepository
 {

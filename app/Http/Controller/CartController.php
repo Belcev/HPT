@@ -12,10 +12,10 @@ use App\Domain\Exception\ProductNotFoundException;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class CartController
+final readonly class CartController
 {
     public function __construct(
-        private readonly CartService $cartService
+        private CartService $cartService
     ) {
     }
 

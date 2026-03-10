@@ -6,12 +6,12 @@ namespace App\Infrastructure\ExternalApi;
 
 use GuzzleHttp\Client;
 
-class NominatimGeocoder implements GeocoderInterface
+final readonly class NominatimGeocoder implements GeocoderInterface
 {
     private const string BASE_URL = 'https://nominatim.openstreetmap.org/search';
 
     public function __construct(
-        private readonly Client $client
+        private Client $client
     ) {
     }
 

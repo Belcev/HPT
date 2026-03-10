@@ -9,7 +9,7 @@ use App\Domain\Cart\CartItem;
 use App\Domain\Cart\CartRepositoryInterface;
 use App\Domain\Product\ProductRepositoryInterface;
 
-readonly class CartService
+final readonly class CartService
 {
     public function __construct(
         private CartRepositoryInterface $cartRepository,

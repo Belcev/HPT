@@ -13,10 +13,10 @@ use App\Domain\Order\OrderItem;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class OrderController
+final readonly class OrderController
 {
     public function __construct(
-        private readonly OrderService $orderService
+        private OrderService $orderService
     ) {
     }
 
