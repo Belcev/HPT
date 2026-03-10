@@ -4,14 +4,15 @@ PHP 8.4 REST API pro správu košíku a objednávek malého e-shopu.
 
 ## Technologie
 
-- **PHP 8.4** + Composer
-- **Slim Framework 4** — HTTP routing
-- **PHP-DI 7** — Dependency Injection
-- **Doctrine DBAL 4** — databázová vrstva (MySQL 8)
-- **Guzzle 7** — HTTP klient pro externí API
-- **Nominatim (OpenStreetMap)** — geokódování dodací adresy (zdarma, bez API klíče)
-- **PHPUnit 13** — unit testy
-- **Docker** — cross-platform prostředí (Nginx, MySQL, phpMyAdmin)
+- PHP 8.4
+- Composer
+- Slim Framework 4
+- PHP-DI 7
+- Doctrine DBAL 4
+- Guzzle 7
+- Nominatim (OpenStreetMap)
+- PHPUnit 13
+- Docker
 
 ---
 
@@ -42,13 +43,6 @@ API je dostupné na **http://localhost**.
 ```bash
 docker compose down
 ```
-
-Reset databáze (smazání volume):
-
-```bash
-docker compose down -v
-```
-
 ---
 
 ## Produkty v katalogu
@@ -62,16 +56,6 @@ docker compose down -v
 | `HEADPH-01` | Noise Cancelling Headphones | 2 499 Kč |
 
 ---
-
-## API Reference
-
-Základní URL: `http://localhost`
-
-Všechny requesty s tělem posílají `Content-Type: application/json`.
-Chyby vracejí `{"error": "popis"}` s příslušným HTTP statusem.
-
----
-
 
 ## Architektura
 
@@ -98,12 +82,21 @@ legacy/
 └── refactored/           # refaktorovaná verze s DI, readonly modely, správné typy
 ```
 
+## Co bych dělal dál, kdybych měl víc času
+
+- **Opakované vytvoření objednávky** — aplikace při vytvoření objednávky nevyprázdní košík, takže pokud klient po vytvoření objednávky znovu zavolá stejný endpoint s tím samým `cart_id`, vytvoří se další objednávka se stejnými položkami. V reálném projektu bych to ošetřil buď vyprázdněním košíku po vytvoření objednávky, nebo přidáním stavu k objednávce a kontrole před vytvořením nové.
+- **Testy** — unit testy pokrývají aplikační vrstvu, chybí testy, které projdou celým stackem.
+- **Autentizace** — pro ochranu endpointů;
+- **Endpoiny pro Produkty** — momentálně je katalog statický (seed v `init.sql`);
+- **CI/CD pipeline** — GitHub Actions
+- **GIT** - v reálném projektu bych do GIT commitů psal jesnější zprávy
+
+## Na co jsem se zaměřil a proč
+
+PHPStan běží na `level: max` bez baseline, takže každý `array` má shape annotation, každý nullable typ je explicitní.
+Jsem si vědom toho, že v praxi je to zbytečné zdržení co místy kód trochu znepřehledňuje a refaktoring je pak náročnější, ale proč ne. :)
+
 ## Poznámky
 
-Ceny jsou interně uloženy jako **celá čísla v haléřích** (`int`). V API odpovědích jsou převedeny na `float` v korunách.  
-Důvodem je, že `float` v PHP může způsobovat problémy s přesností při ukládání peněžních hodnot — použití celých čísel zaručuje přesnost a eliminuje chyby způsobené zaokrouhlováním.
-
-V kódu by se dalo pokračovat například přidáním CI/CD pipeline, rozšířením testovacího pokrytí nebo obohacením API o další funkce (správa produktů, autentizace uživatelů apod.).
-
-## Post Scriptum
-Jsem si vědom toho, že snaha projít PHPStan na `level: max` bez jediného záznamu v `phpstan-baseline` je v praxi spíše akademické cvičení než nutnost — místy kód trochu znepřehledňuje, ale proč ne. :)
+Ceny jsou interně uloženy jako **celá čísla v haléřích** (`int`). V API odpovědích jsou převedeny na `float` v korunách.
+Důvodem je, že `float` v PHP může způsobovat problémy s přesností při ukládání peněžních hodnot
